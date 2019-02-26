@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Componentes">
+	<title>Crud Example</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+	<title>Crud Exemplo</title>	
+	
+	<style type="text/css">
+		/* Set the hover state of "X" */
+		#x:hover {
+			color:#36c;
+		}
+
+		.table-fixed tbody {
+			height: 200px;
+			overflow-y: auto;
+			width: 100%;
+		}
+		.table-fixed thead,
+		.table-fixed tbody,
+		.table-fixed tr,
+		.table-fixed td,
+		.table-fixed th {
+			display: block;
+		}
+		.table-fixed tr:after {
+			content: "";
+			display: block;
+			visibility: hidden;
+			clear: both;
+		}
+		.table-fixed tbody td,
+		.table-fixed thead > tr > th {
+			float: left;
+			width: 20%;
+		}
+
+		.table-fixed > thead > tr > th,
+		.table-fixed > thead > tr > td {
+			font-size: .8em;
+			font-weight: 400;
+			border-bottom: 0;
+			letter-spacing: 1px;
+			vertical-align: top;
+			padding: 8px;
+			background: orange;
+			text-transform: uppercase;
+			color: #ffffff;
+			width: 20%;
+		}
+
+	</style>
+
+</head>
+	<body>
+	
+		<div class="container" id="component-gridview">
+			<div id="messages"></div>
+			<h2>Exemplo crud</h2>
+			<form>
+				<div class="form-group">
+					<label for="usr">Name:</label>
+					<input type="text" class="form-control" id="usr">
+				</div>
+				<div class="form-group">
+					<label for="email">Email:</label>
+					<input type="text" class="form-control" id="email">
+				</div>
+				<div class="form-group">
+					<label for="idade">Idade:</label>
+					<input type="number" class="form-control" id="idade">
+				</div>
+				<div class="form-group">
+					<label for="nascimento">Data:</label>
+					<input type="date" class="form-control" id="nascimento" data-provide="datepicker">
+				</div>
+				<div id="btn-save" href="javascript:void(0)" class="form-group" style="display: none"><button onclick="controller.save(); return false" class="btn btn-primary btn-block">Salvar</button></div>
+				<div id="btn-add" href="javascript:void(0)" class="form-group"><button onclick="controller.add(); return false" class="btn btn-primary btn-block">Adicionar</button></div>
+				
+			</form>
+			
+			<table class="table table-fixed table-condensed table-striped">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Email</th>
+						<th>Idade</th>
+						<th>Data</th>
+						<th>Ações</th>
+					</tr>
+				</thead>
+				<tbody class="nicescrolled">
+
+				</tbody>
+			</table>
+
+			<!-- Modal -->
+			<div class="modal fade" id="excludeConfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Confirmar</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+						<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						Deseja excluir a linha ?
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+						<button type="button" class="btn btn-primary" onclick="controller.GridView.removeRow()">Confirmar</button>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../Componentes/js/jquery.stickytableheaders.min.js"></script>
+		<script type="text/javascript" src="../Componentes/js/jquery.stickytableheaders.js"></script>
+		<script type="text/javascript" src="https://momentjs.com/downloads/moment.js"></script>
+		<script type="text/javascript" src="../Componentes/GridView/GridViewController.js"></script>	
+		<script type="text/javascript" src="../Componentes/GridView/Controller.js"></script>
+		<script type="text/javascript" src="../Componentes/GridView/MessagesController.js"></script>
+
+	<script>
+	let controller = new Controller();
+	controller.load();
+	</script>
+
+	</body>
+</html>
